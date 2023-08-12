@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Two Divs Layout</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Added to stack navigation on top */
+        }
+        
+        .nav {
+            background-color: rgb(224, 222, 222);
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .first {
+            width: 200px;
+            background-color: rgb(34, 33, 33);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .second {
+            flex: 1;
+            background-color:rgb(143, 142, 142);
+            display: flex;
+            flex-wrap: wrap; /* Allow content boxes to wrap */
+            padding: 20px;
+        }
+        
+        .button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid gray;
+            width: 100%;
+            border: none;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer; /* Add cursor pointer on hover */
+            transition: background-color 0.3s; /* Added hover effect transition */
+        }
+        
+        .button:hover {
+            background-color: lightyellow; /* Change background color on hover */
+        }
+        
+        .box {
+            height: 100vh;
+            background-color: aliceblue;
+            width: 1020px;
+            position: relative;
+            border: 1px solid rgb(243, 238, 238);
+            display: flex; /* Added flex display */
+            flex-wrap: wrap; /* Allow content boxes to wrap */
+            padding: 10px; /* Adjust padding */
+            box-sizing: border-box; /* Include padding in width */
+        }
+        
+        .content-box {
+            flex: 0 0 calc(20% - 20px); /* Four boxes in one row without margin */
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            margin: 5px; /* Add margin here */
+            padding: 20px;
+            background-color: white;
+            border: 1px solid gray;
+            border-radius: 5px;
+            
+            transition: background-color 0.3s; /* Added hover effect transition */
+        }
+        
+        .content-box:hover {
+           
+           
+            background-color: lightyellow; /* Change background color on hover */
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+        }
+        .q{
+            background-color: blue;
+            height:88px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 240px;
+        }
+        .update-form{
+            display: flex;
+            margin-top: 65px;
+            flex-direction: column;
+            margin-left: 100px;
+           
+          
+            
+        }
+        .update-input{
+            width:290px;
+            height: 35px;
+            border-radius: 15px;
+        }.updatebtn{
+            margin: 25px;
+            width: 150px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            margin: 50px;
+            margin-left: 95px;
+        }
+        .update-select{
+            width:290px;
+            height: 35px;
+            border-radius: 15px;
+
+        }
+        .utitle{
+            position: absolute;
+            margin-left: 95px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="nav">
+        <div class="q"></div>
+        <h2>Navigation Bar</h2>
+    </div>
+    <div class="container">
+        <div class="first">
+            <div class="button">Div 1</div>
+            <div class="button">Div 2</div>
+            <div class="button">Div 3</div>
+            <div class="button">Div 4</div>
+            <div class="button">Div 5</div>
+        </div>
+        <div class="second">
+            <div class="box">
+                <h2 class="utitle"> Update form</h2>
+                <form class="update-form">
+                    
+                    <label for="department">Department:</label>
+                    <select id="department" class="update-select">
+                        <option value="dept1">Department 1</option>
+                        <option value="dept2">Department 2</option>
+                        <option value="dept3">Department 3</option>
+                    </select>
+        
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" class="update-input">
+        
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="update-input">
+        
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" class="update-input">
+        
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" class="update-input">
+        
+                    <button class="updatebtn">Update</button>
+                </form>
+            </div>
+            
+            
+            
+           
+         </div>
+
+    </div>
+</body>
+</html>
