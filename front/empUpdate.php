@@ -7,73 +7,43 @@
 <html>
 <head>
   <title>Update Employee</title>
-  <!-- <link rel="stylesheet" type="text/css" href="./details.css"> -->
+  <link rel="stylesheet" type="text/css" href="base.css">
+  <!-- <link rel="stylesheet" type="text/css" href="details.css"> -->
+
   <style>
-    body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column; /* Added to stack navigation on top */
-        }
+    /* .utitle{
+      position: absolute;
+      margin-left: 95px;
+    } */
 
-        .nav {
-            background-color: rgb(224, 222, 222);
-            padding: 10px;
-            text-align: center;
-        }
+    .update-form{
+      display: flex;
+      margin-top: 65px;
+      flex-direction: column;
+      margin-left: 100px; 
+    }
 
-        .container{
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-        }
+    .update-select{
+      width: 160px;
+      height: 35px;
+      border-radius: 15px;
+    }
 
-        .dashboard{
-            color: black;
-            background-color: grey;
-            height:88px;
-            top: 0;
-            left: 0;
-            position: absolute;
-            width: 240px;
-        }
+    .update-input{
+      width: 160px;
+      height: 35px;
+      border-radius: 15px;
+    }
 
-        .side_panel {
-            width: 200px;
-            background-color: rgb(34, 33, 33);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .spanel_button {
-            margin: 5px;
-            padding: 10px 20px;
-            background-color: white;
-            border: 1px solid gray;
-            width: 100%;
-            border: none;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer; /* Add cursor pointer on hover */
-            transition: background-color 0.3s; /* Added hover effect transition */
-        }
-        
-        .button:hover {
-            background-color: lightyellow; /* Change background color on hover */
-        }
-
-        .second {
-            flex: 1;
-            background-color:rgb(143, 142, 142);
-            display: flex;
-            flex-wrap: wrap; /* Allow content boxes to wrap */
-            padding: 20px;
-        }
-
-        
+    .updatebtn{
+      margin: 25px;
+      width: 150px;
+      height: 50px;
+      align-items: center;
+      justify-content: center;
+      margin: 50px;
+      margin-left: 95px;
+    }
   </style>
   <script>
     function validateForm() {
@@ -112,8 +82,8 @@
 </head>
 <body>
   <div class="nav">
-        <div class="dashboard"><a href="dashboard.php">Dashboard</a></div>
-        <h2>Logout button</h2>
+    <div class="dashboard"><a href="dashboard.php">Dashboard</a></div>
+    <h2>Logout button</h2>
   </div>
   <div class="container">
     <div class="side_panel">
@@ -134,11 +104,11 @@
           <form class="update-form" onsubmit="return validateForm()" action="../database/update_emp.php" method="post">
             <h2 class="utitle">Update Employee</h2>
             <div class="flex">
-              <label>
+              <label>Department</br>
                   <?php $sqlDept = "SELECT * FROM department";
                     $resultDept = mysqli_query($conn, $sqlDept);
                     if (mysqli_num_rows($result) > 0) {
-                      echo '<select id="department" name="department">';
+                      echo '<select id="department" class="update-select" name="department">';
                        
                       while ($rowDept = mysqli_fetch_assoc($resultDept)) {
                         if($row['department'] == $rowDept['dept_id']){
@@ -156,19 +126,19 @@
               <label>
                 <input id="emp_id" type="hidden" name="emp_id" value="<?php echo $row['emp_id']; ?>">
                 <span>Mobile Number</span></br>
-                <input id="emp_phone" type="tel" name="emp_phone" value="<?php echo $row['emp_phone']; ?>"></br>
+                <input id="emp_phone" class="update-input" type="tel" name="emp_phone" value="<?php echo $row['emp_phone']; ?>"></br>
               </label>
               <label>
                 <span>Address</span></br>
-                <input type="text" id="emp_address" name="emp_address" value="<?php echo $row['emp_address']; ?>"></br>
+                <input type="text" class="update-input" id="emp_address" name="emp_address" value="<?php echo $row['emp_address']; ?>"></br>
                 
               </label>
               <label>
                 <span>Email</span></br>
-                <input type="email" id="emp_email" name="emp_email" value="<?php echo $row['emp_email']; ?>"></br>  
+                <input type="email" class="update-input" id="emp_email" name="emp_email" value="<?php echo $row['emp_email']; ?>"></br>  
               </label>
               
-              <input type="submit" value="Update" id="submit" class="submit" name="submit"></br>
+              <input type="submit" class="updateBtn" value="Update" id="submit" class="submit" name="submit"></br>
             </div>
           </form>
           <?php

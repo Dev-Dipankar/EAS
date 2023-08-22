@@ -1,7 +1,33 @@
+/* <link rel="stylesheet" type="text/css" href="base.css"> */
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Added to stack navigation on top */
+}
+
 .nav {
     background-color: rgb(224, 222, 222);
     padding: 10px;
     text-align: center;
+}
+
+.dashboard{
+    color: black;
+    background-color: grey;
+    height:88px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 240px;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
 }
 
 .side_panel {
@@ -21,35 +47,8 @@
     padding: 20px;
 }
 
-.dashboard{
-    color: black;
-    background-color: grey;
-    height:88px;
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 240px;
-}
-
-.spanel_button {
-    margin: 5px;
-    padding: 10px 20px;
-    background-color: white;
-    border: 1px solid gray;
-    width: 100%;
-    border: none;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer; /* Add cursor pointer on hover */
-    transition: background-color 0.3s; /* Added hover effect transition */
-}
-
-.button:hover {
-    background-color: lightyellow; /* Change background color on hover */
-}
-
 .box {
-    height: 279px;
+    height: 60vh;
     width: 1020px;
     position: relative;
     border: 1px solid rgb(243, 238, 238);
@@ -69,18 +68,68 @@
     background-color: white;
     border: 1px solid gray;
     border-radius: 5px;
-    
     transition: background-color 0.3s; /* Added hover effect transition */
 }
 
-.content-box:hover {
-   
-   
+/* .content-box:hover {
+    background-color: lightyellow;
+} */
+
+
+/* Buttons */
+button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
     background-color: lightyellow; /* Change background color on hover */
 }
-.container{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
+
+.spanel_button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: white;
+    border: 1px solid gray;
+    width: 100%;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer; /* Add cursor pointer on hover */
+    transition: background-color 0.3s; /* Added hover effect transition */
+}
+
+.updateBtn {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.deleteBtn {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.detailsBtn {
+    padding: 5px 10px;
+    background-color: cyan;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.qrBtn {
+    padding: 5px 10px;
+    background-color: yellow;
+    color: white;
+    border: none;
+    cursor: pointer;
 }

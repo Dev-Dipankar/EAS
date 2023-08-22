@@ -6,122 +6,8 @@
 <html>
 <head>
     <title>Employee Info</title>
+    <link rel="stylesheet" type="text/css" href="base.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column; /* Added to stack navigation on top */
-        }
-
-        .nav {
-            background-color: rgb(224, 222, 222);
-            padding: 10px;
-            text-align: center;
-        }
-
-        .container{
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-        }
-
-        .dashboard{
-            color: black;
-            background-color: grey;
-            height:88px;
-            top: 0;
-            left: 0;
-            position: absolute;
-            width: 240px;
-        }
-
-        .side_panel {
-            width: 200px;
-            background-color: rgb(34, 33, 33);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .spanel_button {
-            margin: 5px;
-            padding: 10px 20px;
-            background-color: white;
-            border: 1px solid gray;
-            width: 100%;
-            border: none;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer; /* Add cursor pointer on hover */
-            transition: background-color 0.3s; /* Added hover effect transition */
-        }
-        
-        .button:hover {
-            background-color: lightyellow; /* Change background color on hover */
-        }
-
-        .second {
-            flex: 1;
-            background-color:rgb(143, 142, 142);
-            display: flex;
-            flex-wrap: wrap; /* Allow content boxes to wrap */
-            padding: 20px;
-        }
-        
-        .box {
-            height: 279px;
-            width: 1020px;
-            position: relative;
-            border: 1px solid rgb(243, 238, 238);
-            display: flex; /* Added flex display */
-            flex-wrap: wrap; /* Allow content boxes to wrap */
-            padding: 10px; /* Adjust padding */
-            box-sizing: border-box; /* Include padding in width */
-        }
-
-        button {
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .updateBtn {
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .deleteBtn {
-            padding: 5px 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .detailsBtn {
-            padding: 5px 10px;
-            background-color: cyan;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .qrBtn {
-            padding: 5px 10px;
-            background-color: yellow;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
         .search-container {
             display: flex;
             align-items: center;
@@ -164,9 +50,9 @@
             border-bottom: 1px solid #ddd;
         }
 
-        tr:hover {
+        /* tr:hover {
             background-color: #f5f5f5;
-        }
+        } */
 
         .employee-cell {
             display: flex;

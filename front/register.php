@@ -55,6 +55,7 @@ if ($_POST) {
 <html>
 <head>
     <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="register.css">
     <script>
         function validateForm() {
           var firstName = document.getElementById("firstName").value;
@@ -95,7 +96,6 @@ if ($_POST) {
           }
         }
     </script>
-    <link rel="stylesheet" type="text/css" href="./Register.css">
 </head>
 <body>
     <form class="form" onsubmit="return validateForm()">
