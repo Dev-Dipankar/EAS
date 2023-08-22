@@ -10,7 +10,7 @@
         $empemail = $_POST['emp_email'];
         $department = $_POST['department'];
         
-        $sql = "INSERT INTO emp_info(emp_name,emp_address,emp_phone,emp_email,department) VALUES ('{$empname}','{$empaddress}','{$empphone}','{$empemail}','{$department}')";
+        $sql = "INSERT INTO emp_info(dept_id,emp_name,emp_address,emp_phone,emp_email,department) VALUES ('{$department}','{$empname}','{$empaddress}','{$empphone}','{$empemail}','{$department}')";
         $result = mysqli_query($conn, $sql) or die("Query Unsuccessfull");
 
 

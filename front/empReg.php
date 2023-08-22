@@ -52,9 +52,10 @@
           // Check if mobile number is a valid 10-digit number
           var mobileRegex = /^[0-9]{10}$/;
           if (!mobileRegex.test(empphone)) {
-            alert("Invalid mobile number. Please enter a 10-digit number");
-            return false;
+              alert("Invalid mobile number. Please enter a 10-digit number");
+              return false;
           }
+
     
           // Check if department is selected
           if (department == "") {
@@ -106,22 +107,18 @@
                     <span>Mobile Number</span>
                 </label>
                 <label>
-                    <select id="department" name="department" required>
+                  <select id="department" name="department" required>
                       <option value="" selected disabled>Select Department</option>
                       <?php
-                        $sql = ("SELECT * FROM department") or die("failed to query database".mysqli_error());
-                        $result = mysqli_query($conn, $sql) or die("Query Unsuccessfull");
+                          $sql = "SELECT * FROM department";
+                          $result = mysqli_query($conn, $sql);
 
-                        while($row = mysqli_fetch_assoc($result)){
-
+                          while($row = mysqli_fetch_assoc($result)){
+                              echo "<option value='" . $row['dept_id'] . "'>" . $row['dept_name'] . "</option>";
+                          }
                       ?>
-                      <option><?php echo $row['dept_name']; ?></option>
-
-                      <?php } ?>
-
-
-                    </select>
-                  </label>
+                  </select>
+                </label>
 
                   <!-- <label>
                       <input type="file" id="image" name="image" accept="image/*" required><br><br>
