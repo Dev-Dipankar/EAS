@@ -4,7 +4,7 @@
     $login = false;
     $showErr = false;
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $password = $_POST['passwd'];
 
@@ -14,6 +14,9 @@
 
         if($num == 1){
             $login = true;
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['admin_name'] = $email;
             header("Location:http://localhost/eas/front/dashboard.php");
             exit();
         }
@@ -29,6 +32,11 @@
     <link rel="stylesheet" type="text/css" href="./login.css">
 </head>
 <body>
+    <?php
+        if($login){
+            echo "Logged in Successfully";
+        }
+    ?>
     <form class="form" method="post">
         <p class="form-title">Login in to your account</p>
         <div class="input-container">

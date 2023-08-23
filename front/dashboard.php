@@ -1,14 +1,26 @@
+<?php
+    // include "../database/dbconnect.php";
+    // require_once "login.php";
+    session_start();
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
+        header("location: login.php");
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Dashboard - <?php echo $_SESSION['admin_name']?></title>
     <link>
     <link rel="stylesheet" type="text/css" href="base.css">
 </head>
 <body>
     <div class="nav">
+        Dashboard - <?php echo $_SESSION['admin_name']?>
         <div class="dashboard"><a href="department.php">Dashboard</a></div>
-        <h2>Logout button</h2>
+        <div class="logout"><a href="logout.php">Logout</a></div>
+        <!-- <h2>Logout button</h2> -->
     </div>
     <div class="container">
         <div class="side_panel">
