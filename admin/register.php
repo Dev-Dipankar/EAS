@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Registration</title>
-    <link rel="stylesheet" type="text/css" href="register.css">
+    <link rel="stylesheet" type="text/css" href="../style/register.css">
     <script>
         function validateForm() {
             var name = document.getElementById("name").value;

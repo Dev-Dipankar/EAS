@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Department Management</title>
-    <link rel="stylesheet" type="text/css" href="./base.css">
+    <link rel="stylesheet" type="text/css" href="../style/base.css">
     <style>
         form {
             font-family: Arial, sans-serif;

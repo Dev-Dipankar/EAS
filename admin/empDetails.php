@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Employee Details</title>
-    <link rel="stylesheet" type="text/css" href="./base.css">
+    <link rel="stylesheet" type="text/css" href="../style/base.css">
     <style>
         .utitle{
             position: absolute;

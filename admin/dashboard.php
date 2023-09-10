@@ -13,7 +13,7 @@
 <head>
     <title>Dashboard - <?php echo $_SESSION['admin_name']?></title>
     <link>
-    <link rel="stylesheet" type="text/css" href="base.css">
+    <link rel="stylesheet" type="text/css" href="../style/base.css">
 </head>
 <body>
     <div class="nav">

@@ -29,7 +29,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="./login.css">
+    <link rel="stylesheet" type="text/css" href="../style/login.css">
 </head>
 <body>
     <?php

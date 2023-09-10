@@ -6,8 +6,8 @@
 <html>
 <head>
     <title>Register Employee</title>
-    <link rel="stylesheet" type="text/css" href="base.css">
-    <link rel="stylesheet" type="text/css" href="details.css">
+    <link rel="stylesheet" type="text/css" href="../style/base.css">
+    <link rel="stylesheet" type="text/css" href="../style/details.css">
     <style>
         form {
             font-family: Arial, sans-serif;

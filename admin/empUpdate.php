@@ -7,7 +7,7 @@
 <html>
 <head>
   <title>Update Employee</title>
-  <link rel="stylesheet" type="text/css" href="base.css">
+  <link rel="stylesheet" type="text/css" href="../style/base.css">
   <!-- <link rel="stylesheet" type="text/css" href="details.css"> -->
 
   <style>

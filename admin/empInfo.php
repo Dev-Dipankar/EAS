@@ -6,7 +6,8 @@
 <html>
 <head>
     <title>Employee Info</title>
-    <link rel="stylesheet" type="text/css" href="base.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../chatgpt/base_c.css"> -->
+    <link rel="stylesheet" type="text/css" href="../style/base.css">
     <style>
         .search-container {
             display: flex;
@@ -116,45 +117,6 @@
             cursor: pointer;
         }
     </style>
-    <!-- <script>
-        function updateTime() {
-                var currentTime = new Date();
-                var hours = currentTime.getHours();
-                var minutes = currentTime.getMinutes();
-                var seconds = currentTime.getSeconds();
-
-                var ampm = hours >= 12 ? 'PM' : 'AM';
-                hours = hours % 12;
-                hours = hours ? hours : 12; // to convert time 0-12
-
-                var timeString = hours + ':' + padZero(minutes) + ':' + padZero(seconds) + ' ' + ampm;
-                var timeElement = document.getElementById('currentTime');
-                timeElement.innerHTML = timeString;
-            }
-
-            function padZero(value) {
-                return value < 10 ? '0' + value : value;
-            }
-
-            updateTime();
-            setInterval(updateTime, 1000); // to Update time every second
-
-            var currentDate = new Date();
-            var convertedDate = currentDate.toLocaleDateString('ne-NP');
-            var nepaliDateElement = document.getElementById("nepaliDate");
-            nepaliDateElement.innerHTML = convertedDate;
-
-            var viewPage = document.getElementById('viewPage');
-            var viewPageImage = document.querySelector('.view-page img');
-            var viewPageName = document.querySelector('.view-page h2');
-            var viewPageEmail = document.querySelector('.view-page p.email');
-            var viewPageBio = document.querySelector('.view-page p.bio');
-
-           
-
-            var closeButton = document.getElementById('closeButton');
-            closeButton.addEventListener('click', closeViewPage);
-    </script> -->
 </head>
 <body>
 <div class="nav">
@@ -173,11 +135,61 @@
                 <div class="search-container">
                     <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by name">
                     <div class="date-container">
-                        Nepali: <span id="nepaliDate"></span>
+                    Date: <span id="date"><?php echo date('d/m/Y'); ?></span>
                     </div>
                     <div class="time-container">
-                        Current Time: <span id="currentTime"></span>
+                    Current Time: <span id="currentTime"><?php echo date('h:i A'); ?></span>
                     </div>
+
+                    <script>
+                        function searchTable() {
+                            var input, filter, table, tr, td, i, txtValue;
+                            input = document.getElementById("searchInput");
+                            filter = input.value.toUpperCase();
+                            table = document.querySelector("table");
+                            tr = table.getElementsByTagName("tr");
+
+                            for (i = 0; i < tr.length; i++) {
+                                td = tr[i].getElementsByTagName("td")[1]; // Column with employee names
+                                if (td) {
+                                    txtValue = td.textContent || td.innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        tr[i].style.display = "";
+                                    } else {
+                                        tr[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        }
+                        function updateDate() {
+                            var nepaliDateElement = document.getElementById("date");
+                            var now = new Date();
+                            var year = now.getFullYear();
+                            var month = now.getMonth() + 1; // JavaScript months are 0-based
+                            var day = now.getDate();
+
+                            var nepaliDate = day + '/' + month + '/' + year;
+                            nepaliDateElement.innerHTML = nepaliDate;
+                        }
+
+                        function updateTime() {
+                            var currentTimeElement = document.getElementById("currentTime");
+                            var now = new Date();
+                            var hours = now.getHours();
+                            var minutes = now.getMinutes();
+                            var ampm = hours >= 12 ? 'PM' : 'AM';
+                            hours = hours % 12;
+                            hours = hours ? hours : 12; // Handle midnight (0 AM)
+                            var timeString = hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ' ' + ampm;
+                            currentTimeElement.innerHTML = timeString;
+                        }
+
+                        // Update the date and time immediately and then every second
+                        updateDate();
+                        updateTime();
+                        setInterval(updateDate, 1000);
+                        setInterval(updateTime, 1000);
+                    </script>
                 </div>
                 <?php 
                     $sql = ("SELECT * FROM emp_info JOIN department WHERE emp_info.dept_id = department.dept_id") or die("failed to query database".mysqli_error());
