@@ -17,7 +17,7 @@
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['admin_name'] = $email;
-            header("Location:http://localhost/eas/front/dashboard.php");
+            header("Location:http://localhost/eas/admin/dashboard.php");
             exit();
         }
         else{

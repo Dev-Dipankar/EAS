@@ -18,7 +18,7 @@
 <body>
     <div class="nav">
         Dashboard - <?php echo $_SESSION['admin_name']?>
-        <div class="dashboard"><a href="department.php">Dashboard</a></div>
+        <div class="dashboard"><a href="dashboard.php">Dashboard</a></div>
         <div class="logout"><a href="logout.php">Logout</a></div>
         <!-- <h2>Logout button</h2> -->
     </div>
@@ -27,6 +27,8 @@
             <div class="spanel_button"><a href="department.php">Department</a></div>
             <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
             <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
+            <div class="spanel_button"><a href="../chatgpt/scan_c.php">Attendance</a></div>
+            <!-- <div class="spanel_button"><a href="scan.php">Attendance</a></div> -->
             <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>           
         </div>
         <div class="second">
