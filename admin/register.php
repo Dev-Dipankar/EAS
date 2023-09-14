@@ -1,6 +1,6 @@
 <?php
     include "../database/dbconnect.php";
-    include "../secure/register_be_validate.php";
+    include "../database/register_be.php";
 ?>
 
 <!DOCTYPE html>
