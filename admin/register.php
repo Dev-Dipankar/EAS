@@ -8,6 +8,7 @@
 <head>
     <title>Employee Registration</title>
     <link rel="stylesheet" type="text/css" href="../style/register.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../chatgpt/register_c.css"> -->
     <script>
         function validateForm() {
             var name = document.getElementById("name").value;
@@ -95,10 +96,10 @@
 
         <label for="password">
             <input required="" id="confirm-passwd" placeholder="" type="password" class="input" name="confirm-passwd" name="confirm-passwd">
-            <span>Confirm Passwordr</span>
+            <span>Confirm Password</span>
         </label>
         <button class="submit" type="submit">Submit</button>
-        <p class="signin">Already have an account? <a href="login.php">Sign in</a></p>
+        <p class="signin">Already have an account? <a href="login.php">Login</a></p>
     </form>
 </body>
 </html>

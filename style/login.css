@@ -2,12 +2,11 @@ body {
   background: linear-gradient(to bottom right, #4ebcfc, #5e50a1);
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif; /* Specify a font family for the entire page */
+  /* font-family: Arial, sans-serif; */
 }
 
 .form {
-  background-color: rgba(255, 255, 255, 0.9); /* Use a semi-transparent white background for the form */
-  display: block;
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 1rem;
   max-width: 350px;
   border-radius: 0.5rem;
@@ -17,11 +16,11 @@ body {
 }
 
 .form-title {
-  font-size: 1.25rem;
+  font-size: 28px;
   line-height: 1.75rem;
   font-weight: 600;
   text-align: center;
-  color: #333; /* Darker text color */
+  color: royalblue;
 }
 
 .input-container input, .form button {

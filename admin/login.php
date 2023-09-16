@@ -70,7 +70,7 @@
 
     <p class="signup-link">
         No account?
-        <a href="register.php">Signin</a>
+        <a href="register.php">Sign up</a>
     </p>
     </form>
 
