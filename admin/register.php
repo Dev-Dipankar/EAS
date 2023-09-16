@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registration</title>
+    <title>Employee Registration</title>
     <link rel="stylesheet" type="text/css" href="../style/register.css">
     <script>
         function validateForm() {
@@ -19,20 +19,20 @@
 
             // Check if first name field is empty
             if (name == "") {
-            alert("First name must be filled out");
-            return false;
+                alert("First name must be filled out");
+                return false;
             }
 
             // Check if last name field is empty
             if (address == "") {
-            alert("Address must be filled out");
-            return false;
+                alert("Address must be filled out");
+                return false;
             }
 
             // Check if email field is empty
             if (email == "") {
-            alert("Email must be filled out");
-            return false;
+                alert("Email must be filled out");
+                return false;
             }
 
             // Check if mobile number field is empty

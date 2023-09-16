@@ -25,11 +25,32 @@
         }
     }
 ?>
-
 <html>
 <head>
-    <title></title>
+    
+    <title>Admin Login</title>
     <link rel="stylesheet" type="text/css" href="../style/login.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../chatgpt/login_c.css"> -->
+
+    <script>
+        function validateForm() {    
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("passwd").value;
+
+            // Check if email field is empty
+            if (email == "") {
+                alert("Email must be filled out");
+                return false;
+            }
+
+            // Check if email field is empty
+            if (password == "") {
+                alert("Password must be filled out");
+                return false;
+            }           
+            return true;
+        }
+    </script>
 </head>
 <body>
     <?php
@@ -37,8 +58,8 @@
             echo "Logged in Successfully";
         }
     ?>
-    <form class="form" method="post">
-        <p class="form-title">Login in to your account</p>
+    <form class="form" onsubmit="return validateForm()" method="post">
+        <p class="form-title">Login</p>
         <div class="input-container">
         <input type="email" placeholder="Enter email" id="email" name="email">
     </div>
