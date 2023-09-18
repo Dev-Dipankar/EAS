@@ -1,6 +1,7 @@
+
+
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>QR Code Scanner</title>
   <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>

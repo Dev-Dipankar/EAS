@@ -5,5 +5,5 @@
     $sql = "DELETE FROM department WHERE dept_id = {$deptID}";
     $result = mysqli_query($conn, $sql) or die("Query Unsuccessfull");
 
-    header("Location:http://localhost/eas/front/department.php");
+    header("Location:http://localhost/eas/admin/department.php");
 ?>

@@ -8,7 +8,6 @@
 <head>
     <title>Employee Registration</title>
     <link rel="stylesheet" type="text/css" href="../style/register.css">
-    <!-- <link rel="stylesheet" type="text/css" href="../chatgpt/register_c.css"> -->
     <script>
         function validateForm() {
             var name = document.getElementById("name").value;

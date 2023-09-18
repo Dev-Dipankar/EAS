@@ -1,6 +1,12 @@
 <?php
   include '../database/dbconnect.php';
   include '../database/empReg_be.php';
+
+  session_start();
+  if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
+      header("location: login.php");
+      exit;
+  }
 ?>
 
 <html>
@@ -73,16 +79,17 @@
 </head>
 <body>
     <div class="nav">
-        <div class="dashboard"><a href="dashboard.php">Dashboard</a></div>
-        <h2>Logout button</h2>
+      <div class="admin-title">Employee Register</div>
+      <div class="logout"><a href="logout.php">Logout</a></div>
     </div>
     <div class="container">
         <div class="side_panel">
-            <div class="spanel_button"><a href="department.php">Department</a></div>
-            <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
-            <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
-            <div class="spanel_button"><a href="../chatgpt/scan_c.php">Attendance</a></div>
-            <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>
+          <div class="spanel_button"><a href="dashboard.php">Dashboard</a></div>
+          <div class="spanel_button"><a href="department.php">Department</a></div>
+          <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
+          <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
+          <div class="spanel_button"><a href="../chatgpt/scan_c.php">Attendance</a></div>
+          <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>
         </div>
         <div class="second">
           <div class="box">
@@ -108,7 +115,7 @@
                     <span>Mobile Number</span>
                 </label>
                 <label>
-                  <select id="department" name="department" required>
+                  <select class="update-select" id="department" name="department" required>
                       <option value="" selected disabled>Select Department</option>
                       <?php
                           $sql = "SELECT * FROM department";

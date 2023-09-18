@@ -1,20 +1,25 @@
 <?php
     include '../database/dbconnect.php';
-?>
+
+    session_start();
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
+        header("location: login.php");
+        exit;
+    }
+?>  
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Employee Info</title>
-    <!-- <link rel="stylesheet" type="text/css" href="../chatgpt/base_c.css"> -->
     <link rel="stylesheet" type="text/css" href="../style/base.css">
     <style>
         .search-container {
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            margin-bottom: 20px;
-            margin-left: 200px;
+            height: 50px;
+            margin: 80px 0px 10px 200px;
         }
 
         .search-container input[type="text"] {
@@ -42,13 +47,14 @@
 
         table {
             border-collapse: collapse;
-            width: 80%;
+            width: 90%;
         }
 
         th, td {
-            padding: 8px;
+            padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
+            height: 2px;
         }
 
         /* tr:hover {
@@ -119,12 +125,13 @@
     </style>
 </head>
 <body>
-<div class="nav">
-        <div class="dashboard"><a href="dashboard.php">Dashboard</a></div>
-        <h2>Logout button</h2>
+    <div class="nav">
+        <div class="admin-title">Employee List</div>
+        <div class="logout"><a href="logout.php">Logout</a></div>
     </div>
     <div class="container">
         <div class="side_panel">
+            <div class="spanel_button"><a href="dashboard.php">Dashboard</a></div>
             <div class="spanel_button"><a href="department.php">Department</a></div>
             <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
             <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>

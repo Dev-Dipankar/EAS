@@ -1,6 +1,6 @@
 <?php
     // include "../database/dbconnect.php";
-    // require_once "login.php";
+    // <?php echo $_SESSION['admin_name']
     session_start();
     if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
         header("location: login.php");
@@ -12,18 +12,16 @@
 <html>
 <head>
     <title>Dashboard - <?php echo $_SESSION['admin_name']?></title>
-    <link>
     <link rel="stylesheet" type="text/css" href="../style/base.css">
 </head>
 <body>
     <div class="nav">
-        Dashboard - <?php echo $_SESSION['admin_name']?>
-        <div class="dashboard"><a href="dashboard.php">Dashboard</a></div>
+        <div class="admin-title">Admin Dashboard</div> 
         <div class="logout"><a href="logout.php">Logout</a></div>
-        <!-- <h2>Logout button</h2> -->
     </div>
     <div class="container">
         <div class="side_panel">
+            <div class="spanel_button"><a href="dashboard.php">Dashboard</a></div>
             <div class="spanel_button"><a href="department.php">Department</a></div>
             <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
             <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>

@@ -1,6 +1,12 @@
 <?php
   include '../database/dbconnect.php';
   include '../database/update_emp.php';
+
+  session_start();
+  if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
+      header("location: login.php");
+      exit;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -8,43 +14,8 @@
 <head>
   <title>Update Employee</title>
   <link rel="stylesheet" type="text/css" href="../style/base.css">
-  <!-- <link rel="stylesheet" type="text/css" href="details.css"> -->
-
-  <style>
-    /* .utitle{
-      position: absolute;
-      margin-left: 95px;
-    } */
-
-    .update-form{
-      display: flex;
-      margin-top: 65px;
-      flex-direction: column;
-      margin-left: 100px; 
-    }
-
-    .update-select{
-      width: 160px;
-      height: 35px;
-      border-radius: 15px;
-    }
-
-    .update-input{
-      width: 160px;
-      height: 35px;
-      border-radius: 15px;
-    }
-
-    .updatebtn{
-      margin: 25px;
-      width: 150px;
-      height: 50px;
-      align-items: center;
-      justify-content: center;
-      margin: 50px;
-      margin-left: 95px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="../style/details.css">
+  
   <script>
     function validateForm() {
       var empaddress = document.getElementById("emp_address").value;
@@ -82,8 +53,8 @@
 </head>
 <body>
   <div class="nav">
-    <div class="dashboard"><a href="dashboard.php">Dashboard</a></div>
-    <h2>Logout button</h2>
+    <div class="admin-title">Employee List</div>
+    <div class="logout"><a href="logout.php">Logout</a></div>
   </div>
   <div class="container">
     <div class="side_panel">
@@ -102,10 +73,10 @@
           if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
           ?>
-          <form class="update-form" onsubmit="return validateForm()" action="../database/update_emp.php" method="post">
-            <h2 class="utitle">Update Employee</h2>
-            <div class="flex">
-              <label>Department</br>
+          <form class="form" onsubmit="return validateForm()" action="../database/update_emp.php" method="post">
+            <h2 class="title">Update Employee</h2>
+            <span>Department</span>
+              <label>
                   <?php $sqlDept = "SELECT * FROM department";
                     $resultDept = mysqli_query($conn, $sqlDept);
                     if (mysqli_num_rows($result) > 0) {
@@ -124,23 +95,21 @@
                     echo '<br>';
                 ?>
               </label>
+              <span>Mobile Number</span>
               <label>
-                <input id="emp_id" type="hidden" name="emp_id" value="<?php echo $row['emp_id']; ?>">
-                <span>Mobile Number</span></br>
-                <input id="emp_phone" class="update-input" type="tel" name="emp_phone" value="<?php echo $row['emp_phone']; ?>"></br>
+                <input id="emp_id" type="hidden" name="emp_id" value="<?php echo $row['emp_id']; ?>">     
+                <input id="emp_phone" class="update-input" type="tel" name="emp_phone" value="<?php echo $row['emp_phone']; ?>">
               </label>
+              <span>Address</span>
               <label>
-                <span>Address</span></br>
-                <input type="text" class="update-input" id="emp_address" name="emp_address" value="<?php echo $row['emp_address']; ?>"></br>
-                
+                <input type="text" class="update-input" id="emp_address" name="emp_address" value="<?php echo $row['emp_address']; ?>">     
               </label>
-              <label>
-                <span>Email</span></br>
-                <input type="email" class="update-input" id="emp_email" name="emp_email" value="<?php echo $row['emp_email']; ?>"></br>  
+              <span>Email</span>
+              <label>  
+                <input type="email" class="update-input" id="emp_email" name="emp_email" value="<?php echo $row['emp_email']; ?>"> 
               </label>
               
-              <input type="submit" class="updateBtn" value="Update" id="submit" class="submit" name="submit"></br>
-            </div>
+              <input type="submit" class="update" value="Update" id="submit" class="submit" name="submit"></br>
           </form>
           <?php
               }
