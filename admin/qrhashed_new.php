@@ -5,20 +5,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>QR Code Generator</title>
+    <title>Employee QR Code</title>
+    <link rel="stylesheet" type="text/css" href="../style/base.css">
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
 </head>
 <body>
-    <div id="container">
-        <h1>QR Code Generator</h1>
-        <div id="qrcode"></div>
-        <p>Company name and other information goes here</p>
+    <div class="nav">
+        <div class="admin-title">Generated QR Code</div> 
+        <div class="logout"><a href="logout.php">Logout</a></div>
     </div>
-
-    <style>
-        
-    </style>
-
+    
+    <div class="container">
+        <div class="side_panel">
+            <div class="spanel_button"><a href="../admin/dashboard.php">Dashboard</a></div>
+            <div class="spanel_button"><a href="../admin/department.php">Department</a></div>
+            <div class="spanel_button"><a href="../admin/empReg.php">Register Employee</a></div>
+            <div class="spanel_button"><a href="../admin/empInfo.php">Employee Info</a></div>
+            <div class="spanel_button"><a href="../chatgpt/scan_c.php">Attendance</a></div>
+            <!-- <div class="spanel_button"><a href="scan.php">Attendance</a></div> -->
+            <div class="spanel_button"><a href="../admin/empAttendance.php">Attendance Report</a></div>           
+        </div>
+        <div class="second">
+            <div class="box">
+                <div id="qrcode-container">
+                    <h1>Employee QR Code</h1>
+                    <div id="qrcode"></div>
+                    <p>ID: <span id="employee-id"><?php echo $id; ?></span></p>
+                    <!-- <p>Company name and other information goes here</p> -->
+                </div>
+            </div>
+            
+        </div>        
+    </div>
     <script>
         <?php
             $id = $_GET['id'];  // Get the ID from the URL parameter
@@ -61,6 +80,9 @@
             generateQRCode(hashedData);
         });
         <?php } ?>
+
+        const employeeId = "<?php echo $id; ?>";
+        document.getElementById('employee-id').textContent = employeeId;
     </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2023 at 06:43 AM
+-- Generation Time: Sep 20, 2023 at 03:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -66,22 +66,20 @@ CREATE TABLE `emp_info` (
   `dept_id` int(15) NOT NULL,
   `emp_name` varchar(60) NOT NULL,
   `emp_address` varchar(120) NOT NULL,
-  `emp_gender` varchar(15) NOT NULL,
   `emp_phone` varchar(20) NOT NULL,
   `emp_email` varchar(60) NOT NULL,
   `department` int(15) NOT NULL,
-  `emp_photo` varchar(120) NOT NULL
+  `qr_hash` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `emp_info`
 --
 
-INSERT INTO `emp_info` (`emp_id`, `dept_id`, `emp_name`, `emp_address`, `emp_gender`, `emp_phone`, `emp_email`, `department`, `emp_photo`) VALUES
-(1, 1, 'Dipankar Joshi', 'Satungal', '', '9860254623', 'dipankar@gmail.com', 1, ''),
-(2, 1, 'Aagya Shrestha ', 'Lubhu', '', '9860125475', 'aayga@gmail.com', 1, ''),
-(3, 3, 'Alan Khanal', 'jhapa', '', '9825461254', 'alan@gmail.com', 3, ''),
-(4, 2, 'Riya Shrestha', 'Naikap', '', '9865412574', 'riya@gmail.com', 2, '');
+INSERT INTO `emp_info` (`emp_id`, `dept_id`, `emp_name`, `emp_address`, `emp_phone`, `emp_email`, `department`, `qr_hash`) VALUES
+(2, 1, 'Aagya Shrestha ', 'Lubhu', '9860125475', 'aayga@gmail.com', 1, NULL),
+(3, 3, 'Alan Khanal', 'jhapa', '9825461254', 'alan@gmail.com', 3, NULL),
+(4, 2, 'Riya Shrestha', 'Naikap', '9865412574', 'riya@gmail.com', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -95,6 +93,14 @@ CREATE TABLE `scan_records` (
   `time_in` datetime DEFAULT NULL,
   `time_out` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `scan_records`
+--
+
+INSERT INTO `scan_records` (`id`, `qr_code_data`, `time_in`, `time_out`) VALUES
+(1, '6e4d6928c4968ab4d9f80e119bf2ad3fdd711934256fa35ed890eee6bca9afa3', '2023-09-20 14:32:22', '2023-09-20 14:46:46'),
+(2, '', '2023-09-20 14:40:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -118,7 +124,8 @@ CREATE TABLE `super_admin` (
 INSERT INTO `super_admin` (`admin_id`, `admin_name`, `admin_address`, `admin_email`, `admin_phone`, `admin_passwd`) VALUES
 (1, 'Dipankar Joshi', 'Satungal', 'dipankar@gmail.com', 9860325648, 'root@123'),
 (2, 'Aagya Shrestha', 'Lubhu', 'aagya@gmail.com', 9856125412, 'root123'),
-(3, 'riya', 'naikap', 'riya@gmail.com', 9856125412, 'riya123');
+(3, 'riya', 'naikap', 'riya@gmail.com', 9856125412, 'riya123'),
+(4, 'Alan Khanal', 'Jhapa', 'alan@gmail.com', 9851246571, 'alan@123');
 
 --
 -- Indexes for dumped tables
@@ -175,13 +182,13 @@ ALTER TABLE `emp_info`
 -- AUTO_INCREMENT for table `scan_records`
 --
 ALTER TABLE `scan_records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `super_admin`
 --
 ALTER TABLE `super_admin`
-  MODIFY `admin_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `admin_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

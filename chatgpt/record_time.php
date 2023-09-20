@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require_once('dbconnect.php');
+require_once('../database/dbconnect.php');
 
 // Get the QR code data from the POST request
 if (isset($_POST['qrCodeData'])) {
@@ -16,7 +16,7 @@ if (isset($_POST['qrCodeData'])) {
 
     // Debugging: Log the timestamp
     error_log('Timestamp: ' . $timestamp);
-
+    
     // Check if the QR code data already exists in the database
     $checkQuery = "SELECT * FROM scan_records WHERE qr_code_data = '$qrCodeData'";
     $checkResult = mysqli_query($conn, $checkQuery);

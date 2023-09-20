@@ -30,7 +30,6 @@
     
     <title>Admin Login</title>
     <link rel="stylesheet" type="text/css" href="../style/login.css">
-    <!-- <link rel="stylesheet" type="text/css" href="../chatgpt/login_c.css"> -->
 
     <script>
         function validateForm() {    

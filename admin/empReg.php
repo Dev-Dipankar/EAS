@@ -88,6 +88,7 @@
           <div class="spanel_button"><a href="department.php">Department</a></div>
           <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
           <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
+          <!-- <div class="spanel_button"><a href="scan.php">Attendance</a></div> -->
           <div class="spanel_button"><a href="../chatgpt/scan_c.php">Attendance</a></div>
           <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>
         </div>
@@ -127,13 +128,7 @@
                       ?>
                   </select>
                 </label>
-
-                  <!-- <label>
-                      <input type="file" id="image" name="image" accept="image/*" required><br><br>
-                  </label> -->
-                  
                   <input type="submit" value="Register" id="submit" class="submit" name="submit" >
-                  <!-- <p class="signup">Already have an acount ? <a href="login.php">Signup</a> </p> -->
                 </form>
           </div>    
         </div>

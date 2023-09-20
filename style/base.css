@@ -61,6 +61,47 @@ body {
     box-sizing: border-box;
 }
 
+#qrcode-container {
+    width: 50%; /* Adjust the width for the QR code container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#qrcode {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+}
+
+#qr-video {
+    width: 100%; /* Adjusted video width */
+    max-width: 400px; /* Added max-width to video */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.video-container {
+    width: 100%; /* Adjusted video width */
+    max-width: 600px; /* Added max-width to video */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Added margin to separate from scanning result */
+}
+
+#qr-canvas {
+    width: 100%; /* Adjusted canvas width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 400px; /* Added max-width to canvas */
+}
+
+#qr-result {
+    text-align: left;
+}
+
+#qr-result {
+    margin-top: 20px;
+}
+
+
 .content-box {
     flex: 0 0 calc(20% - 10px); /* Four boxes in one row without margin */
     height: 80px;
