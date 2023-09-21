@@ -34,7 +34,7 @@
             <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
             <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
             <div class="spanel_button"><a href="scan.php">Attendance</a></div>
-            <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>           
+            <div class="spanel_button"><a href="attenReport.php">Attendance Report</a></div>           
         </div>
         <div class="second">
             <div class="box">
@@ -54,8 +54,8 @@
                 </div>
 
                 <div class="content-box">Attendance Report
-                    <span><a href="empAttendance.php"><i class="fa-solid fa-chart-bar fa-xl"></i></a></span>
-                    <span><a href="empAttendance.php"> More Info</a></span>
+                    <span><a href="attenReport.php"><i class="fa-solid fa-chart-bar fa-xl"></i></a></span>
+                    <span><a href="attenReport.php"> More Info</a></span>
                 </div>
 
                 <div class="content-box">Take Attendance

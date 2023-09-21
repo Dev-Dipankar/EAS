@@ -23,7 +23,7 @@
             $sql = "INSERT INTO super_admin(admin_name,admin_address,admin_email,admin_phone,admin_passwd) VALUES ('{$name}','{$address}','{$email}','{$phone}','{$password}')";
             $result = mysqli_query($conn, $sql) or die("Query Unsuccessfull");          
         
-            // header("Location:http://localhost/eas/front/register.php");
+            header("Location:http://localhost/eas/admin/register.php");
         }
     }
 ?>

@@ -14,6 +14,10 @@
     <title>Employee Info</title>
     <link rel="stylesheet" type="text/css" href="../style/base.css">
     <style>
+        .box {
+            flex-direction: column;
+        }
+
         .search-container {
             display: flex;
             align-items: center;
@@ -56,10 +60,6 @@
             border-bottom: 1px solid #ddd;
             height: 2px;
         }
-
-        /* tr:hover {
-            background-color: #f5f5f5;
-        } */
 
         .employee-cell {
             display: flex;
@@ -122,6 +122,11 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
+        .no-record-message {
+            text-align: center;
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
@@ -136,7 +141,7 @@
             <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
             <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
             <div class="spanel_button"><a href="scan.php">Attendance</a></div>
-            <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>
+            <div class="spanel_button"><a href="attenReport.php">Attendance Report</a></div>
         </div>
         <div class="second">
             <div class="box">
@@ -200,8 +205,7 @@
                     </script>
                 </div>
                 <?php 
-                    $sql = ("SELECT * FROM emp_info JOIN department WHERE emp_info.dept_id = department.dept_id") or die("failed to query database".mysqli_error());
-
+                    $sql = "SELECT * FROM emp_info JOIN department ON emp_info.dept_id = department.dept_id ORDER BY emp_info.emp_id";
                 
                     $result = mysqli_query($conn, $sql) or die("Query Unsuccessfull");
                 
@@ -237,7 +241,7 @@
                 </table>
 
                 <?php }else{
-                    echo "<h2>No Record Found</h2>";
+                    echo '<div class="no-record-message"><h2>No Record Found</h2></div>';
                 } ?>
             </div>
         </div>

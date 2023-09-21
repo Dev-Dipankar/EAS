@@ -58,11 +58,12 @@
   </div>
   <div class="container">
     <div class="side_panel">
-        <div class="spanel_button"><a href="department.php">Department</a></div>
-        <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
-        <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
-        <div class="spanel_button"><a href="scan.php">Attendance</a></div>
-        <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>
+      <div class="spanel_button"><a href="dashboard.php">Dashboard</a></div>
+      <div class="spanel_button"><a href="department.php">Department</a></div>
+      <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
+      <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
+      <div class="spanel_button"><a href="scan.php">Attendance</a></div>
+      <div class="spanel_button"><a href="attenReport.php">Attendance Report</a></div>
     </div>
     <div class="second">
       <div class="box">

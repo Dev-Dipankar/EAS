@@ -12,6 +12,6 @@
 
         
 
-        header("Location:http://localhost/eas/front/department.php");
+        header("Location:http://localhost/eas/admin/department.php");
     }
 ?>

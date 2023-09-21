@@ -14,6 +14,10 @@
     <title>Attendance Report</title>
     <link rel="stylesheet" type="text/css" href="../style/base.css">
     <style>
+        .box{
+            flex-direction: column;
+        }
+
         .search-container {
             display: flex;
             align-items: center;
@@ -56,10 +60,6 @@
             border-bottom: 1px solid #ddd;
             height: 2px;
         }
-
-        /* tr:hover {
-            background-color: #f5f5f5;
-        } */
 
         .employee-cell {
             display: flex;
@@ -122,6 +122,11 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
+        .no-record {
+            text-align: center;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -136,11 +141,11 @@
             <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
             <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
             <div class="spanel_button"><a href="scan.php">Attendance</a></div>
-            <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>
+            <div class="spanel_button"><a href="attenReport.php">Attendance Report</a></div>
         </div>
         <div class="second">
             <div class="box">
-            <div class="search-container">
+                <div class="search-container">
                     <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by name">
                     <div class="date-container">
                     Date: <span id="date"><?php echo date('d/m/Y'); ?></span>
@@ -200,7 +205,7 @@
                     </script>
                 </div>
                 <?php 
-                   $sql ="SELECT * FROM scan_records LEFT JOIN emp_info ON scan_records.emp_id=emp_info.emp_id" or die("failed to query database".mysqli_error());
+                $sql ="SELECT * FROM scan_records LEFT JOIN emp_info ON scan_records.emp_id=emp_info.emp_id" or die("failed to query database".mysqli_error());
 
                 
                     $result = mysqli_query($conn, $sql) or die("Query Unsuccessfull");
@@ -208,18 +213,18 @@
                     if(mysqli_num_rows($result) > 0){
                 ?>
                 <table border="1">
-					<thread>
-						<tr>
-							<th>ID.</th>
-							<th>Employee Name</th>
-							<th>Time IN</th>
-							<th>Time Out</th>
-							<th>Log Date</th>
-						</tr>
-					</thread>
-					<tbody>
+                    <thread>
+                        <tr>
+                            <th>ID.</th>
+                            <th>Employee Name</th>
+                            <th>Time IN</th>
+                            <th>Time Out</th>
+                            <th>Log Date</th>
+                        </tr>
+                    </thread>
+                    <tbody>
                         <?php
-                           while ($row = $result->fetch_assoc()){
+                        while ($row = $result->fetch_assoc()){
                         ?>
                         <tr>
                             <td><?php echo $row['emp_id'];?></td>
@@ -232,9 +237,9 @@
                     </tbody>                   
                 </table>
 
-                <?php }else{
-                    echo "<h2>No Record Found</h2>";
-                } ?>
+                    <?php }else{
+                        echo '<div class="no-record"><h2>No Record Found</h2></div>';
+                    } ?>
             </div>
         </div>
     </div>
