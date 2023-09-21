@@ -14,6 +14,6 @@
         $result = mysqli_query($conn, $sql) or die("Query Unsuccessfull");
 
 
-        header("Location:http://localhost/eas/front/empreg.php");
+        header("Location:http://localhost/eas/admin/empreg.php");
     }
 ?>

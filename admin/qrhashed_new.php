@@ -1,5 +1,30 @@
 <?php
     include "../database/dbconnect.php";
+
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {
+        $id = $_GET['id'];  // Get the ID from the URL parameter
+
+        $query = "SELECT * FROM emp_info JOIN department WHERE emp_info.dept_id = department.dept_id AND emp_id = $id";
+        $result = mysqli_query($conn, $query);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $empname = $row['emp_name'];
+            $empaddress = $row['emp_address'];
+            $empemail = $row['emp_email'];
+            $department = $row['dept_name'];
+
+            // Construct the data to encode into the QR code
+            $dataToEncode = "Name: $empname\nAddress: $empaddress\nEmail: $empemail\nDepartment: $department";
+
+            // Hash the data using SHA-256
+            $hashedData = hash('sha256', $dataToEncode);
+
+            // Insert the hashed QR code data into the database
+            $updateQuery = "UPDATE emp_info SET qr_code = '$hashedData' WHERE emp_id = $id";
+            mysqli_query($conn, $updateQuery);
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +105,6 @@
             generateQRCode(hashedData);
         });
         <?php } ?>
-
         const employeeId = "<?php echo $id; ?>";
         document.getElementById('employee-id').textContent = employeeId;
     </script>

@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee Info</title>
+    <title>Attendance Report</title>
     <link rel="stylesheet" type="text/css" href="../style/base.css">
     <style>
         .search-container {
@@ -126,7 +126,7 @@
 </head>
 <body>
     <div class="nav">
-        <div class="admin-title">Employee List</div>
+        <div class="admin-title">Attendance Report</div>
         <div class="logout"><a href="logout.php">Logout</a></div>
     </div>
     <div class="container">
@@ -135,14 +135,72 @@
             <div class="spanel_button"><a href="department.php">Department</a></div>
             <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
             <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
-            <!-- <div class="spanel_button"><a href="scan.php">Attendance</a></div> -->
-            <div class="spanel_button"><a href="../chatgpt/scan_c.php">Attendance</a></div>
+            <div class="spanel_button"><a href="scan.php">Attendance</a></div>
             <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>
         </div>
         <div class="second">
             <div class="box">
+            <div class="search-container">
+                    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by name">
+                    <div class="date-container">
+                    Date: <span id="date"><?php echo date('d/m/Y'); ?></span>
+                    </div>
+                    <div class="time-container">
+                    Current Time: <span id="currentTime"><?php echo date('h:i A'); ?></span>
+                    </div>
+
+                    <script>
+                        function searchTable() {
+                            var input, filter, table, tr, td, i, txtValue;
+                            input = document.getElementById("searchInput");
+                            filter = input.value.toUpperCase();
+                            table = document.querySelector("table");
+                            tr = table.getElementsByTagName("tr");
+
+                            for (i = 0; i < tr.length; i++) {
+                                td = tr[i].getElementsByTagName("td")[1]; // Column with employee names
+                                if (td) {
+                                    txtValue = td.textContent || td.innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        tr[i].style.display = "";
+                                    } else {
+                                        tr[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        }
+                        function updateDate() {
+                            var nepaliDateElement = document.getElementById("date");
+                            var now = new Date();
+                            var year = now.getFullYear();
+                            var month = now.getMonth() + 1; // JavaScript months are 0-based
+                            var day = now.getDate();
+
+                            var nepaliDate = day + '/' + month + '/' + year;
+                            nepaliDateElement.innerHTML = nepaliDate;
+                        }
+
+                        function updateTime() {
+                            var currentTimeElement = document.getElementById("currentTime");
+                            var now = new Date();
+                            var hours = now.getHours();
+                            var minutes = now.getMinutes();
+                            var ampm = hours >= 12 ? 'PM' : 'AM';
+                            hours = hours % 12;
+                            hours = hours ? hours : 12; // Handle midnight (0 AM)
+                            var timeString = hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ' ' + ampm;
+                            currentTimeElement.innerHTML = timeString;
+                        }
+
+                        // Update the date and time immediately and then every second
+                        updateDate();
+                        updateTime();
+                        setInterval(updateDate, 1000);
+                        setInterval(updateTime, 1000);
+                    </script>
+                </div>
                 <?php 
-                    $sql = ("SELECT * FROM emp_info JOIN department WHERE emp_info.dept_id = department.dept_id") or die("failed to query database".mysqli_error());
+                   $sql ="SELECT * FROM scan_records LEFT JOIN emp_info ON scan_records.emp_id=emp_info.emp_id" or die("failed to query database".mysqli_error());
 
                 
                     $result = mysqli_query($conn, $sql) or die("Query Unsuccessfull");
@@ -161,32 +219,17 @@
 					</thread>
 					<tbody>
                         <?php
-                        $server = "localhost";
-                        $username="root";
-                        $password="";
-                        $dbname="qrcodedb";
-                    
-                        $conn = new mysqli($server,$username,$password,$dbname);
-						$date = date('Y-m-d');
-                        if($conn->connect_error){
-                            die("Connection failed" .$conn->connect_error);
-                        }
-                           $sql ="SELECT * FROM attendance LEFT JOIN student ON attendance.STUDENTID=student.STUDENTID";
-                           $query = $conn->query($sql);
-                           while ($row = $query->fetch_assoc()){
+                           while ($row = $result->fetch_assoc()){
                         ?>
-                            <tr>
-                                <td><?php echo $row['LASTNAME'].', '.$row['FIRSTNAME'].' '.$row['MNAME'];?></td>
-                                <td><?php echo $row['STUDENTID'];?></td>
-                                <td><?php echo $row['TIMEIN'];?></td>
-                                <td><?php echo $row['TIMEOUT'];?></td>
-                                <td><?php echo $row['LOGDATE'];?></td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                    
+                        <tr>
+                            <td><?php echo $row['emp_id'];?></td>
+                            <td><?php echo $row['emp_name'];?></td>
+                            <td><?php echo $row['time_in'];?></td>
+                            <td><?php echo $row['time_out'];?></td>
+                            <td><?php echo $row['logdate'];?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>                   
                 </table>
 
                 <?php }else{

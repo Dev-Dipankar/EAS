@@ -1,6 +1,4 @@
 <?php
-    // include "../database/dbconnect.php";
-    // <?php echo $_SESSION['admin_name']
     session_start();
     if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
         header("location: login.php");
@@ -13,6 +11,16 @@
 <head>
     <title>Dashboard - <?php echo $_SESSION['admin_name']?></title>
     <link rel="stylesheet" type="text/css" href="../style/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .content-box {
+            justify-content: center;
+        }
+        .content-box span i {
+            color: black;
+            margin: 20px 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="nav">
@@ -25,32 +33,35 @@
             <div class="spanel_button"><a href="department.php">Department</a></div>
             <div class="spanel_button"><a href="empReg.php">Register Employee</a></div>
             <div class="spanel_button"><a href="empInfo.php">Employee Info</a></div>
-            <!-- <div class="spanel_button"><a href="scan.php">Attendance</a></div> -->
-            <div class="spanel_button"><a href="../chatgpt/scan_c.php">Attendance</a></div>
+            <div class="spanel_button"><a href="scan.php">Attendance</a></div>
             <div class="spanel_button"><a href="empAttendance.php">Attendance Report</a></div>           
         </div>
         <div class="second">
             <div class="box">
-                <div class="content-box">Depatment
-                    <span>Icon</span>
-                    <span><a href="department.php"> more info</a></span>
+                <div class="content-box">Department
+                    <span><a href="department.php"><i class="fa-solid fa-graduation-cap fa-xl"></i></a></span>
+                    <span><a href="department.php">More Info</a></span>
                 </div>
+
                 <div class="content-box">Register Employee
-                    <span>Icon</span>
-                    <span><a href="empReg.php"> more info</a></span>
+                    <span><a href="empReg.php"><i class="fa-solid fa-user-plus fa-xl"></i></a></span>
+                    <span><a href="empReg.php"> More Info</a></span>
                 </div>
+
                 <div class="content-box">Employee List
-                    <span>Icon</span>
-                    <span><a href="empInfo.php"> more info</a></span>
+                    <span><a href="empInfo.php"><i class="fa-solid fa-users fa-xl"></i></a></span>
+                    <span><a href="empInfo.php"> More Info</a></span>
                 </div>
+
                 <div class="content-box">Attendance Report
-                    <span>Icon</span>
-                    <span><a href="empAttendance.php"> more info</a></span>
+                    <span><a href="empAttendance.php"><i class="fa-solid fa-chart-bar fa-xl"></i></a></span>
+                    <span><a href="empAttendance.php"> More Info</a></span>
                 </div>
+
                 <div class="content-box">Take Attendance
-                    <span>Icon</span>
-                    <span><a href="scan.php"> more info</a></span>
-                </div> 
+                    <span><a href="scan.php"><i class="fa-solid fa-camera fa-xl"></i></a></span>
+                    <span><a href="scan.php"> More Info</a></span>
+                </div>
             </div>
         </div>
     </div>

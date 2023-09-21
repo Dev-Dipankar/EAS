@@ -14,6 +14,13 @@
   <title>QR Code Scanner</title>
   <link rel="stylesheet" type="text/css" href="../style/base.css">
   <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+
+  <style>
+    .box {
+        flex-direction: column;
+        align-items: center;
+    }
+    </style>
 </head>
 
 <body>
@@ -29,15 +36,19 @@
         <div class="spanel_button"><a href="../admin/empReg.php">Register Employee</a></div>
         <div class="spanel_button"><a href="../admin/empInfo.php">Employee Info</a></div>
         <div class="spanel_button"><a href="scan.php">Attendance</a></div>
-        <!-- <div class="spanel_button"><a href="../chatgpt/scan_c.php">Attendance</a></div> -->
         <div class="spanel_button"><a href="../admin/empAttendance.php">Attendance Report</a></div>           
     </div>
 
     <div class="second">
       <div class="box">
-        <video id="qr-video" width="600" height="600" autoplay></video>
+        <div class="video-container">
+          <video id="qr-video" width="600" height="600" autoplay></video>
+        </div>
+        <div id="qr-result-container">
+          <p id="qr-result">Scanning...</p>
+        </div>
         <canvas id="qr-canvas" width="640" height="480" style="display: none;"></canvas>
-        <p id="qr-result">Scanning...</p>
+        <!-- <p id="qr-result">Scanning...</p> -->
 
         <script>
           // Flag to track if the first scan is done
@@ -89,30 +100,33 @@
 
           // Function to send QR code data to the server for recording time-in
           function recordTime(qrCodeData) {
-            // Send an AJAX request to the server with the QR code data and timestamp
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'record_time.php'); // Create a new PHP file for this
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-              if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                  // Successfully recorded time-in
-                  console.log('Time-in recorded successfully.');
-                } else {
-                  // Display an error message if recording fails
-                  const qrResultElement = document.getElementById('qr-result');
-                  qrResultElement.textContent = 'Error recording time-in.';
-                  console.error('Failed to record time-in.');
-                }
-              }
-            };
+            console.log(qrCodeData)
+              // Send an AJAX request to the server with the QR code data and timestamp
+              const xhr = new XMLHttpRequest();
+              xhr.open('POST', 'http://localhost/eas/database/record_time.php'); // Create a new PHP file for this
+              //xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+              window.location.href = 'http://localhost/eas/database/record_time.php?hash='+qrCodeData;
             
-            // Get the current timestamp in 'YYYY-MM-DD HH:MM:SS' format
-            const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {  console.log(xhr.status)
+                  if (xhr.status === 200) {
+                    // Successfully recorded time-in
+                    console.log('Time-in recorded successfully.');
+                  } else {
+                    // Display an error message if recording fails
+                    const qrResultElement = document.getElementById('qr-result');
+                    qrResultElement.textContent = 'Error recording time-in.';
+                    console.error('Failed to record time-in.');
+                  }
+                }
+              };
+              
+              // Get the current timestamp in 'YYYY-MM-DD HH:MM:SS' format
+              const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
-            // Send the QR code data and timestamp as POST parameters
-            xhr.send('qrCodeData=' + encodeURIComponent(qrCodeData) + '&timestamp=' + encodeURIComponent(timestamp));
-          }
+              // Send the QR code data and timestamp as POST parameters
+              xhr.send('qrCodeData=' + encodeURIComponent(qrCodeData) + '&timestamp=' + encodeURIComponent(timestamp));
+            }
         </script>
       </div>
     </div>
