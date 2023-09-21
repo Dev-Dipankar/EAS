@@ -8,14 +8,17 @@
     if (isset($_GET['hash'])) {
         $qrCodeData = $_GET['hash'];
 
-        // Check if the QR code data exists in the emp_info table
-        $checkQuery = "SELECT * FROM emp_info WHERE qr_code = ?";
+        // Check if the QR code data exists in the emp_info table and get emp_id
+        $checkQuery = "SELECT emp_id FROM emp_info WHERE qr_code = ?";
         $stmt = $conn->prepare($checkQuery);
         $stmt->bind_param('s', $qrCodeData);
         $stmt->execute();
         $checkResult = $stmt->get_result();
 
         if ($checkResult->num_rows == 1) {
+            $row = $checkResult->fetch_assoc();
+            $empId = $row['emp_id'];
+
             // Get the current timestamp and date
             $timestamp = date('H:i:s');
             $logDate = date('Y-m-d');
@@ -34,9 +37,9 @@
 
             if ($checkScanResult->num_rows == 0) {
                 // Insert a new record for time-in
-                $insertQuery = "INSERT INTO scan_records (qr_code, time_in, time_out, logdate) VALUES (?, ?, NULL, ?)";
+                $insertQuery = "INSERT INTO scan_records (qr_code, time_in, time_out, logdate, emp_id) VALUES (?, ?, NULL, ?, ?)";
                 $stmt = $conn->prepare($insertQuery);
-                $stmt->bind_param('sss', $qrCodeData, $timestamp, $logDate);
+                $stmt->bind_param('sssi', $qrCodeData, $timestamp, $logDate, $empId);
 
                 if ($stmt->execute()) {
                     echo 'Time-in recorded successfully.';
@@ -50,7 +53,7 @@
                 $currentTimestamp = strtotime($timestamp);
 
                 // Check if at least 4 hours have passed
-                if ($currentTimestamp - $timeInTimestamp >= 600) {
+                if ($currentTimestamp - $timeInTimestamp >= 200) {
                     // Update the existing record with time-out
                     $updateQuery = "UPDATE scan_records SET time_out = ? WHERE qr_code = ? AND time_in IS NOT NULL AND time_out IS NULL";
                     $stmt = $conn->prepare($updateQuery);

@@ -48,7 +48,6 @@
           <p id="qr-result">Scanning...</p>
         </div>
         <canvas id="qr-canvas" width="640" height="480" style="display: none;"></canvas>
-        <!-- <p id="qr-result">Scanning...</p> -->
 
         <script>
           // Flag to track if the first scan is done
