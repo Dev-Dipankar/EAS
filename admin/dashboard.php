@@ -4,12 +4,14 @@
         header("location: login.php");
         exit;
     }
+
+    
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - <?php echo $_SESSION['admin_name']?></title>
+    <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="../style/base.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>

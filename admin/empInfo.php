@@ -231,7 +231,7 @@
                                     
                                     <td>
                                         <button class=detailsBtn><a href="empDetails.php?id=<?php echo $row['emp_id'] ?>">Details</a></button>
-                                        <button class=qrBtn><a href="qrhashed_new.php?id=<?php echo $row['emp_id'] ?>">QR</a></button>
+                                        <!-- <button class=qrBtn><a href="generate_qr.php?id=<?php echo $row['emp_id'] ?>">QR</a></button> -->
                                         <button class=deleteBtn><a href="../database/delete_emp.php?id=<?php echo $row['emp_id'] ?>">Delete</a></button>
                                         <button class=updateBtn><a href="empupdate.php?id=<?php echo $row['emp_id'] ?>">Update</a></button>
                                     </td>

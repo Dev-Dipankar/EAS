@@ -115,7 +115,7 @@
                                         echo "<div class=employee-info>Employee Email: " . $row['emp_email'] . "</div>";
                                         echo "<div class=employee-info>Employee Address: " . $row['emp_address'] . "</div>";
                                         echo "<div class=employee-info>Department: " . $row['dept_name'] . "</div>";
-                                        echo "<div class='button-container'><button class='qrBtn'><a href='qrhashed_new.php?id=" . $row['emp_id'] . "'>QR</a></button></div>";
+                                        // echo "<div class='button-container'><button class='qrBtn'><a href='generate_qr.php?id=" . $row['emp_id'] . "'>QR</a></button></div>";
                                     } else {
                                         echo "<h2>No Record Found</h2>";
                                     }

@@ -19,6 +19,8 @@
             $row = $checkResult->fetch_assoc();
             $empId = $row['emp_id'];
 
+            date_default_timezone_set('Asia/Kathmandu');
+
             // Get the current timestamp and date
             $timestamp = date('H:i:s');
             $logDate = date('Y-m-d');

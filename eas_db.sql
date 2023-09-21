@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2023 at 11:03 AM
+-- Generation Time: Sep 21, 2023 at 05:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,8 +38,9 @@ CREATE TABLE `department` (
 
 INSERT INTO `department` (`dept_id`, `dept_name`) VALUES
 (1, 'IT'),
-(2, 'Management'),
-(3, 'Sales');
+(2, 'Accounts'),
+(3, 'Management'),
+(4, 'Marketing');
 
 -- --------------------------------------------------------
 
@@ -64,9 +65,10 @@ CREATE TABLE `emp_info` (
 --
 
 INSERT INTO `emp_info` (`emp_id`, `dept_id`, `atten_id`, `emp_name`, `emp_address`, `emp_phone`, `emp_email`, `department`, `qr_code`) VALUES
-(2, 1, 0, 'Aagya Shrestha ', 'Lubhu', '9860125475', 'aayga@gmail.com', 1, '23f09c602bac5be1b22ffe538222fd9ef84130898bc7204b80666536ee4242c8'),
-(3, 3, 0, 'Alan Khanal', 'jhapa', '9825461254', 'alan@gmail.com', 3, '798d312ac0cbf32995c4f36ee4040b20f77793315d01d0a14037c40747a747cc'),
-(4, 2, 0, 'Riya Shrestha', 'Naikap', '9865412574', 'riya@gmail.com', 2, '3b37fda9d126027aa1fed217e12626d85367b6127d7c17308c58afd002dbbef3');
+(1, 1, 0, 'Dipankar Joshi', 'Satungal', '9860654128', 'dipankar@gmail.com', 1, '6e4d6928c4968ab4d9f80e119bf2ad3fdd711934256fa35ed890eee6bca9afa3'),
+(2, 3, 0, 'Aagya Shrestha', 'Lubhu', '9860365412', 'aagya@gmail.com', 3, '4e88cd81e2c22b4922d6e8b792b4ca06b6a06098cadefaf76e5aebeee206dc69'),
+(3, 2, 0, 'Riya Shrestha', 'Naikap', '9826654128', 'riya@gmail.com', 2, '3fed307479d45402a0ed91320583a1d57602202f5c423ea76e62fc6f8c0f86e4'),
+(5, 2, 0, 'Alan Khanal', 'Jhapa', '9852236547', 'alan@gmail.com', 2, '888d166a1f99f6ff0138d3b12937b5ea651eab22166b2e8e23c9994f5ca689ec');
 
 -- --------------------------------------------------------
 
@@ -88,8 +90,8 @@ CREATE TABLE `scan_records` (
 --
 
 INSERT INTO `scan_records` (`atten_id`, `emp_id`, `qr_code`, `time_in`, `time_out`, `logdate`) VALUES
-(8, 0, '798d312ac0cbf32995c4f36ee4040b20f77793315d01d0a14037c40747a747cc', '10:01:24', '10:22:28', '2023-09-21'),
-(9, 0, '798d312ac0cbf32995c4f36ee4040b20f77793315d01d0a14037c40747a747cc', '10:22:36', '11:02:35', '2023-09-21');
+(1, 0, '3fed307479d45402a0ed91320583a1d57602202f5c423ea76e62fc6f8c0f86e4', '16:43:25', '16:50:02', '2023-09-21'),
+(2, 2, '4e88cd81e2c22b4922d6e8b792b4ca06b6a06098cadefaf76e5aebeee206dc69', '17:00:22', '17:05:58', '2023-09-21');
 
 -- --------------------------------------------------------
 
@@ -113,8 +115,8 @@ CREATE TABLE `super_admin` (
 INSERT INTO `super_admin` (`admin_id`, `admin_name`, `admin_address`, `admin_email`, `admin_phone`, `admin_passwd`) VALUES
 (1, 'Dipankar Joshi', 'Satungal', 'dipankar@gmail.com', 9860325648, 'root@123'),
 (2, 'Aagya Shrestha', 'Lubhu', 'aagya@gmail.com', 9856125412, 'root123'),
-(3, 'riya', 'naikap', 'riya@gmail.com', 9856125412, 'riya123'),
-(4, 'Alan Khanal', 'Jhapa', 'alan@gmail.com', 9851246571, 'alan@123');
+(3, 'Riya Shrestha', 'naikap', 'riya@gmail.com', 9856125412, 'riya123'),
+(5, 'Alan Khanal', 'Jhapa', 'alan@gmaill.com', 9856412571, 'alan123');
 
 --
 -- Indexes for dumped tables
@@ -159,19 +161,19 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `emp_info`
 --
 ALTER TABLE `emp_info`
-  MODIFY `emp_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `emp_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `scan_records`
 --
 ALTER TABLE `scan_records`
-  MODIFY `atten_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `atten_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `super_admin`
 --
 ALTER TABLE `super_admin`
-  MODIFY `admin_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `admin_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

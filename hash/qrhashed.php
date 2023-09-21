@@ -47,8 +47,7 @@
             <div class="spanel_button"><a href="../admin/department.php">Department</a></div>
             <div class="spanel_button"><a href="../admin/empReg.php">Register Employee</a></div>
             <div class="spanel_button"><a href="../admin/empInfo.php">Employee Info</a></div>
-            <div class="spanel_button"><a href="../chatgpt/scan_c.php">Attendance</a></div>
-            <!-- <div class="spanel_button"><a href="scan.php">Attendance</a></div> -->
+            <div class="spanel_button"><a href="scan.php">Attendance</a></div>
             <div class="spanel_button"><a href="../admin/empAttendance.php">Attendance Report</a></div>           
         </div>
         <div class="second">
