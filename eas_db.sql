@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2023 at 05:17 PM
+-- Generation Time: Sep 21, 2023 at 10:21 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -65,10 +65,11 @@ CREATE TABLE `emp_info` (
 --
 
 INSERT INTO `emp_info` (`emp_id`, `dept_id`, `atten_id`, `emp_name`, `emp_address`, `emp_phone`, `emp_email`, `department`, `qr_code`) VALUES
-(1, 1, 0, 'Dipankar Joshi', 'Satungal', '9860654128', 'dipankar@gmail.com', 1, '6e4d6928c4968ab4d9f80e119bf2ad3fdd711934256fa35ed890eee6bca9afa3'),
-(2, 3, 0, 'Aagya Shrestha', 'Lubhu', '9860365412', 'aagya@gmail.com', 3, '4e88cd81e2c22b4922d6e8b792b4ca06b6a06098cadefaf76e5aebeee206dc69'),
-(3, 2, 0, 'Riya Shrestha', 'Naikap', '9826654128', 'riya@gmail.com', 2, '3fed307479d45402a0ed91320583a1d57602202f5c423ea76e62fc6f8c0f86e4'),
-(5, 2, 0, 'Alan Khanal', 'Jhapa', '9852236547', 'alan@gmail.com', 2, '888d166a1f99f6ff0138d3b12937b5ea651eab22166b2e8e23c9994f5ca689ec');
+(1, 1, 0, 'Dipankar Joshi', 'Satungal', '9860654128', 'dipankar@gmail.com', 1, '217487136'),
+(2, 3, 0, 'Aagya Shrestha', 'Lubhu', '9860365412', 'aagya@gmail.com', 3, '2465210978'),
+(3, 2, 0, 'Riya Shrestha', 'Naikap', '9826654128', 'riya@gmail.com', 2, '2313271729'),
+(5, 2, 0, 'Alan Khanal', 'Jhapa', '9852236547', 'alan@gmail.com', 2, '590371716'),
+(6, 3, 0, 'Ritush Prajapati', 'Samakhushi', '9826658412', 'ritush@gmail.com', 3, '123864901');
 
 -- --------------------------------------------------------
 
@@ -90,8 +91,8 @@ CREATE TABLE `scan_records` (
 --
 
 INSERT INTO `scan_records` (`atten_id`, `emp_id`, `qr_code`, `time_in`, `time_out`, `logdate`) VALUES
-(1, 0, '3fed307479d45402a0ed91320583a1d57602202f5c423ea76e62fc6f8c0f86e4', '16:43:25', '16:50:02', '2023-09-21'),
-(2, 2, '4e88cd81e2c22b4922d6e8b792b4ca06b6a06098cadefaf76e5aebeee206dc69', '17:00:22', '17:05:58', '2023-09-21');
+(1, 6, '1829507112', '21:13:17', '21:40:57', '2023-09-21'),
+(4, 6, '123864901', '01:34:33', '02:05:33', '2023-09-22');
 
 -- --------------------------------------------------------
 
@@ -161,13 +162,13 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `emp_info`
 --
 ALTER TABLE `emp_info`
-  MODIFY `emp_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `emp_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `scan_records`
 --
 ALTER TABLE `scan_records`
-  MODIFY `atten_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `atten_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `super_admin`
