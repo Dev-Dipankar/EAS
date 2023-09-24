@@ -55,19 +55,25 @@
                 $currentTimestamp = strtotime($timestamp);
 
                 // Check if at least 4 hours have passed
-                if ($currentTimestamp - $timeInTimestamp >= 200) {
+                if ($currentTimestamp - $timeInTimestamp >= 15) {
                     // Update the existing record with time-out
                     $updateQuery = "UPDATE scan_records SET time_out = ? WHERE qr_code = ? AND time_in IS NOT NULL AND time_out IS NULL";
                     $stmt = $conn->prepare($updateQuery);
                     $stmt->bind_param('ss', $timestamp, $qrCodeData);
 
                     if ($stmt->execute()) {
+                        // Remove the QR code from the emp_info table
+                        $removeQRQuery = "UPDATE emp_info SET qr_code = NULL WHERE qr_code = ?";
+                        $stmtRemove = $conn->prepare($removeQRQuery);
+                        $stmtRemove->bind_param('s', $qrCodeData);
+                        $stmtRemove->execute();
+                        
                         echo 'Time-out recorded successfully.';
                     } else {
                         echo 'Error recording time-out: ' . $conn->error;
                     }
                 } else {
-                    echo 'Time-out can only be recorded after 30 mins of time-in.';
+                    echo 'Time-out can only be recorded after 4 hours of time-in.';
                 }
             }
         } else {
